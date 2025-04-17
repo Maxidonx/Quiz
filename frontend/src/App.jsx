@@ -1,27 +1,28 @@
-// src/App.jsx
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import QuizViewer from "./pages/QuizViewer";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
+import QuizPage from './pages/QuizPage';
+import QuizList from './pages/QuizList';
+import AdminPanel from './pages/AdminPanel';
+import Leaderboard from './pages/LeaderBoard';
+// import QuizPage from './pages/QuizPage';
+import ProtectedRoute from './components/ProtectedRoute';
 
-import PrivateRoute from "./components/PrivateRoute";
-
-export default function App() {
+function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<QuizList />} />
         <Route path="/login" element={<Login />} />
-        <Route element={<PrivateRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/quiz/:quizIdentifier" element={<QuizViewer />} />
-          
-
-        </Route>
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        <Route path="/quiz/:category" element={<ProtectedRoute><QuizPage /></ProtectedRoute>} />
+        <Route path="/admin" element={<ProtectedRoute><AdminPanel /></ProtectedRoute>} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
+
+export default App;

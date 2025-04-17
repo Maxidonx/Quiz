@@ -91,9 +91,19 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="flex justify-center items-center h-[60vh]">
-        <h2 className="text-4xl font-bold animate-bounce">Welcome {user.username}</h2>
+      <div className="flex flex-col justify-center items-center h-[60vh] gap-6">
+        <h2 className="text-4xl font-bold animate-bounce text-blue-900">
+          Welcome {user.username}
+        </h2>
+
+        <a
+          href="/"
+          className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+        >
+          🎮 Start a Quiz
+        </a>
       </div>
+
 
       {showProfileForm && (
         <form

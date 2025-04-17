@@ -44,6 +44,7 @@ def get_questions_by_category(category):
         questions_data = [
             {
                 "id": q.id,
+                "quiz_id": q.quiz_id,
                 "question_text": q.question_text,
                 "options": {
                     "A": q.option_a,
